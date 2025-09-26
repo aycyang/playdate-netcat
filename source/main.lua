@@ -13,9 +13,10 @@ local gfx <const> = playdate.graphics
 
 function fetchImg()
   print("creating request...")
-  local req = playdate.network.http.new("cataas.com", 80, false, ":3")
+  local req = playdate.network.http.new("example.com", 443, true, ":3")
   req:setRequestCompleteCallback(onResponse)
-  if not req:get("/cat") then
+  req:setConnectTimeout(10)
+  if not req:get("/") then
     print("get failed")
     return
   end
