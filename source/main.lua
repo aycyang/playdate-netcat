@@ -13,10 +13,10 @@ local gfx <const> = playdate.graphics
 
 function fetchImg()
   print("creating request...")
-  local req = playdate.network.http.new("example.com", 443, true, ":3")
+  local req = playdate.network.http.new("raw.githubusercontent.com", 443, true, ":3")
   req:setRequestCompleteCallback(onResponse)
   req:setConnectTimeout(10)
-  if not req:get("/") then
+  if not req:get("/aycyang/playdate-netcat/refs/heads/main/cat.txt") then
     print("get failed")
     return
   end
